@@ -7,52 +7,58 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Index - Listagem
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index() {
         $products = Product::active()->paginate(10);
         return view('product.index', compact('products'));
     }
 
+    /**
+     * Edita - Página de Edição
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
+     */
     public function edit(Request $request, Product $product) {
         return view('product.form', compact('product'));
     }
 
+    /**
+     * Create Prodct
+     * @param \Illuminate\Http\Request $request
+     */
     public function create(Request $request) {
+        $this->validateRequest($request);
         $product = Product::create($request->all());
         return redirect()->route('product.edit', $product->id)->with('success', 'Product created successfully.');
     }
     
+    /**
+     * Update Product
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     */
     public function update(Request $request, $id) {
+        $this->validateRequest($request);
         $product = Product::findOrFail($id);
         $product->update($request->all());
         return redirect()->route('products.index');
     }    
 
+    /**
+     * Valida Post Produto
+     * @param \Illuminate\Http\Request $request
+     */
     private function validateRequest(Request $request)
     {
         $request->validate([
-            'name'           => 'required|string|max:255',
-            'description'    => 'string',
-            'active'         => 'required|boolean',
-            'amount'         => 'required|numeric',
-            'images.*'       => 'sometimes|file|mimes:jpg,jpeg,png,bmp,webp|max:2048',
-            'brandId'        => 'required|numeric',
-            'categoryId'     => 'sometimes|numeric',
-            'colorPaletteId' => 'nullable|numeric',
+            'description'       => 'required|string',
+            'price'             => 'required|numeric',
+            'inventory_level'   => 'required|int',
+            'barcode'           => 'required|numeric',
+            'active'            => 'required|boolean',
         ]);
-    }
-
-    private function productData(Request $request)
-    {
-        return [
-            'name'             => $request->name,
-            'description'      => $request->description,
-            'howToUse'         => $request->howToUse,
-            'active'           => $request->active,
-            'amount'           => $request->amount,
-            'user_id'          => auth()->id(),
-            'brand_id'         => $request->brandId,
-            'category_id'      => $request->categoryId,
-            'color_palette_id' => $request->colorPaletteId
-        ];
     }
 }

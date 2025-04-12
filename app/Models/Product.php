@@ -11,6 +11,7 @@ class Product extends Model
         'description',
         'price',
         'inventory_level',
+        'barcode',
         'active',
     ];
 
@@ -18,7 +19,8 @@ class Product extends Model
     protected $casts = [
         'price'             => 'decimal:2',
         'inventory_level'   => 'integer',
-        'active'             => 'integer',
+        'active'            => 'integer',
+        'barcode'           => 'integer',
     ];
 
     public function scopeActive($query)

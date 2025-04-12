@@ -47,6 +47,9 @@
           </table>
         </div>
       </div>
+      <div style="width: 100%; display: flex; justify-content: center;">
+        {{ $products->links() }}
+      </div>
     </div>
   </div>
 </x-app-layout>

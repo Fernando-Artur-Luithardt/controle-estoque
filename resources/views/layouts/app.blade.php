@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Language" content="pt-br" />
     <meta name="msapplication-TileColor" content="#2d89ef">
@@ -12,40 +13,46 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <!-- Generated: 2018-04-16 09:29:05 +0200 -->
-    <title>Novo produto</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    <script src="./assets/js/require.min.js"></script>
+    <script src="/assets/js/require.min.js"></script>
     <script>
       requirejs.config({
           baseUrl: '.'
       });
     </script>
     <!-- Dashboard Core -->
-    <link href="/assets/css/dashboard.css" rel="stylesheet" />
-    <script src="./assets/js/dashboard.js"></script>
+    <link href="./assets/css/dashboard.css" rel="stylesheet" />
+    <script src="/assets/js/dashboard.js"></script>
     <!-- c3.js Charts Plugin -->
-    <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-    <script src="./assets/plugins/charts-c3/plugin.js"></script>
+    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="/assets/plugins/charts-c3/plugin.js"></script>
     <!-- Google Maps Plugin -->
-    <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-    <script src="./assets/plugins/maps-google/plugin.js"></script>
+    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="/assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
-    <script src="./assets/plugins/input-mask/plugin.js"></script>
-</head>
-<body>
-
-    <body class="">
+    <script src="/assets/plugins/input-mask/plugin.js"></script>
+  </head>
+  <body class="">
     <div class="page">
       <div class="page-main">
         <div class="header py-4">
           <div class="container">
             <div class="d-flex">
               <a class="header-brand" href="./index.html">
-                <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
+                <img src="/demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">                
                 <div>
@@ -95,23 +102,11 @@
           </div>
         </div>
         <div class="my-3 my-md-5">
-            <div class="container">
-                @yield('content')
-            </div>
+          <div class="container">
+            {{ $slot }}
+          </div>
         </div>
       </div>
     </div>
-
-    {{-- Conteúdo principal --}}
-    <main>
-        
-    </main>
-
-    {{-- Rodapé --}}
-    <footer>
-        <p>&copy; {{ date('Y') }} Meu Site. Todos os direitos reservados.</p>
-    </footer>
-
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-</body>
+  </body>
 </html>

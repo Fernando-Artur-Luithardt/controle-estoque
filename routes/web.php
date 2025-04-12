@@ -25,6 +25,8 @@ Route::prefix('/dashboard')->controller(IndexController::class)->group(function(
 });
 
 Route::prefix('/products')->controller(ProductController::class)->group(function(){
-    Route::get('/', 'index')->name('products.get');
-    Route::get('/create', 'create')->name('products.create');
+    Route::get('/', 'index')->name('products.index');
+    Route::post('/create', 'create')->name('product.create');
+    Route::get('/edit/{product?}', 'edit')->name('product.edit'); // Carrega formulário com produto
+    Route::put('/update/{product?}', 'update')->name('product.update'); // Atualiza produto existente
 });

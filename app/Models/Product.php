@@ -11,18 +11,18 @@ class Product extends Model
         'description',
         'price',
         'inventory_level',
-        'trash',
+        'active',
     ];
 
     // Tipos de dados dos atributos
     protected $casts = [
         'price'             => 'decimal:2',
         'inventory_level'   => 'integer',
-        'trash'             => 'integer',
+        'active'             => 'integer',
     ];
 
     public function scopeActive($query)
     {
-        return $query->where('trash', 0);
+        return $query->where('active', 1);
     }
 }

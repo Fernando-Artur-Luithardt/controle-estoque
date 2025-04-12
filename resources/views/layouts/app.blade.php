@@ -13,8 +13,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -34,13 +34,13 @@
       });
     </script>
     <!-- Dashboard Core -->
-    <link href="./assets/css/dashboard.css" rel="stylesheet" />
+    <link href="/assets/css/dashboard.css" rel="stylesheet" />
     <script src="/assets/js/dashboard.js"></script>
     <!-- c3.js Charts Plugin -->
-    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
     <script src="/assets/plugins/charts-c3/plugin.js"></script>
     <!-- Google Maps Plugin -->
-    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
     <script src="/assets/plugins/maps-google/plugin.js"></script>
     <!-- Input Mask Plugin -->
     <script src="/assets/plugins/input-mask/plugin.js"></script>
@@ -51,15 +51,15 @@
         <div class="header py-4">
           <div class="container">
             <div class="d-flex">
-              <a class="header-brand" href="./index.html">
-                <img src="/demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
+              <a class="header-brand" href="{{ route('profile.edit') }}">
+                <img src="/assets/demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">                
                 <div>
-                  <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                    <span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>
+                  <a href="{{ route('profile.edit') }}" class="nav-link pr-0 leading-none">
+                    <span class="avatar" style="background-image: url(/assets/demo/faces/female/25.jpg)"></span>
                     <span class="ml-2 d-none d-lg-block">
-                      <span class="text-default">Jane Pearson</span>
+                      <span class="text-default">{{ Auth::user()->name }}</span>
                       <small class="text-muted d-block mt-1">Administrator</small>
                     </span>
                   </a>
@@ -85,16 +85,16 @@
               <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                   <li class="nav-item">
-                    <a href="./index.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-home"></i> Home</a>
                   </li>
 		              <li class="nav-item">
-                    <a href="./produtos.html" class="nav-link"><i class="fe fe-package"></i> Produtos</a>
+                    <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.index', 'product.edit') ? 'active' : '' }}"><i class="fe fe-package"></i> Produtos</a>
                   </li>
 		              <li class="nav-item">
-                    <a href="./form-venda.html" class="nav-link"><i class="fe fe-dollar-sign"></i> Venda</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-dollar-sign"></i> Venda</a>
                   </li>
 		              <li class="nav-item">
-                    <a href="./produtos-excluidos.html" class="nav-link"><i class="fe fe-trash"></i> Lixeira</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-trash"></i> Lixeira</a>
                   </li>
                 </ul>
               </div>

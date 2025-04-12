@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    // Atributos que podem ser preenchidos em massa
     protected $fillable = [
         'description',
         'price',
@@ -15,7 +14,6 @@ class Product extends Model
         'active',
     ];
 
-    // Tipos de dados dos atributos
     protected $casts = [
         'price'             => 'decimal:2',
         'inventory_level'   => 'integer',

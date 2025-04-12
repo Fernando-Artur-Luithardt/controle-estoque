@@ -91,7 +91,7 @@
                     <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.index', 'product.edit') ? 'active' : '' }}"><i class="fe fe-package"></i> Produtos</a>
                   </li>
 		              <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-dollar-sign"></i> Venda</a>
+                    <a href="{{ route('sale.index') }}" class="nav-link {{ request()->routeIs('sale.index') ? 'active' : '' }}"><i class="fe fe-dollar-sign"></i> Venda</a>
                   </li>
 		              <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-trash"></i> Lixeira</a>
@@ -101,11 +101,7 @@
             </div>
           </div>
         </div>
-        <div class="my-3 my-md-5">
-          <div class="container">
-            {{ $slot }}
-          </div>
-        </div>
+        {{ $slot }}
       </div>
     </div>
   </body>

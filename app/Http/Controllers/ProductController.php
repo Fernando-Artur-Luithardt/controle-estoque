@@ -17,6 +17,14 @@ class ProductController extends Controller
     }
 
     /**
+     * Index - Listagem
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function get(Product $product) {
+        return response()->json($product);
+    }
+
+    /**
      * Edita - Página de Edição
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Product $product

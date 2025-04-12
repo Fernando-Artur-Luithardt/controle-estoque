@@ -31,14 +31,16 @@ class SaleController extends Controller
             return redirect()->back()->withErrors(['amount' => 'A quantidade solicitada excede o estoque disponível.'])->withInput();;
         }
 
-        $product = Sale::create($request->all());
+        Sale::create($request->all());
 
         if($request->update_price) {
             $product->price = $request->price;
         }
 
         //Atualiza inventory_level do Produto da venda
-        $product->inventory_level = $request->inventory_level - $request->amount;
+        $product->inventory_level = $product->inventory_level - $request->amount;
         $product->update();
+
+        return redirect()->back()->with('success','');
     }
 }

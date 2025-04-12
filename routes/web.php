@@ -3,6 +3,7 @@ require __DIR__.'/auth.php';
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductTrashController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,11 @@ Route::prefix('/products')->controller(ProductController::class)->group(function
     Route::post('/create', 'create')->name('product.create');
     Route::get('/edit/{product?}', 'edit')->name('product.edit'); // Carrega formulário com produto
     Route::put('/update/{product?}', 'update')->name('product.update'); // Atualiza produto existente
+});
+
+Route::prefix('/product')->controller(ProductTrashController::class)->group(function(){
+    Route::get('/trash', 'index')->name('product.trash.index');
+    Route::post('/trash/{product}', 'update')->name('product.trash.update');
 });
 
 Route::prefix('/sales')->controller(SaleController::class)->group(function(){

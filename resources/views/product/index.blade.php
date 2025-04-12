@@ -27,19 +27,19 @@
                 <tbody>
                   @foreach($products as $key => $product)
                     <tr>
-                      <td><span class="text-muted">1</span></td>
+                      <td><span class="text-muted">{{ $product->id }}</span></td>
                       <td>{{ $product->description }}</td>
                       <td>{{ $product->price }}</td>
                       <td>{{ $product->inventory_level }}</td>
-                      <td> - </td>
-                      <td> - </td>                         
+                      <td>{{ $product->sales->last()?->created_at }} </td>
+                      <td>{{ $product->sales->count() }}</td>                         
                       <td>
                         <a class="icon" href="{{ route('product.edit', ['product' => $product->id]) }}">
                           <i class="fe fe-edit"></i>
                         </a>
                       </td>
                       <td>
-                        <a class="icon" href="javascript:void(0)">
+                        <a class="icon move_product_trash" id="{{ $product->id }}" href="javascript:void(0)">
                           <i class="fe fe-trash"></i>
                         </a>
                       </td>
@@ -56,4 +56,5 @@
       </div>
     </div>
   </div>
+  <script defer src="/assets/js/product/index.js"></script>
 </x-app-layout>

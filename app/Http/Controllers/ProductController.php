@@ -12,7 +12,7 @@ class ProductController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function index() {
-        $products = Product::active()->paginate(10);
+        $products = Product::with('sales')->active()->paginate(10);
         return view('product.index', compact('products'));
     }
 

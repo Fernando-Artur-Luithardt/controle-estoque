@@ -21,8 +21,12 @@ class Product extends Model
         'barcode'           => 'integer',
     ];
 
-    public function scopeActive($query)
+    public function sales() {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function scopeActive($query, $value = 1)
     {
-        return $query->where('active', 1);
+        return $query->where('active', $value);
     }
 }

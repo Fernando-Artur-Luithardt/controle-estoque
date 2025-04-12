@@ -16,7 +16,7 @@ class ProductSelect extends Component
      */
     public function __construct()
     {
-        $this->products = Product::all();
+        $this->products = Product::active()->get();
     }
 
     /**

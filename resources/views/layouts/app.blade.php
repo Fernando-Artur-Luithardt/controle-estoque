@@ -94,7 +94,7 @@
                     <a href="{{ route('sale.index') }}" class="nav-link {{ request()->routeIs('sale.index') ? 'active' : '' }}"><i class="fe fe-dollar-sign"></i> Venda</a>
                   </li>
 		              <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-trash"></i> Lixeira</a>
+                    <a href="{{ route('product.trash.index') }}" class="nav-link {{ request()->routeIs('product.trash.index') ? 'active' : '' }}"><i class="fe fe-trash"></i> Lixeira</a>
                   </li>
                 </ul>
               </div>

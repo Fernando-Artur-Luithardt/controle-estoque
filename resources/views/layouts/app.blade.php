@@ -55,7 +55,7 @@
                 <img src="/assets/demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
               </a>
               <div class="d-flex order-lg-2 ml-auto">                
-                <div>
+                <div style="display: flex; align-items: center;">
                   <a href="{{ route('profile.edit') }}" class="nav-link pr-0 leading-none">
                     <span class="avatar" style="background-image: url(/assets/demo/faces/female/25.jpg)"></span>
                     <span class="ml-2 d-none d-lg-block">
@@ -63,6 +63,15 @@
                       <small class="text-muted d-block mt-1">Administrator</small>
                     </span>
                   </a>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
+                  </form>
                 </div>
               </div>
               <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">

@@ -3,13 +3,13 @@
     <div class="container">
       <div class="row">              
         <div class="col-lg-12">
-          <form action="{{ $product ? route('product.update', $product->id) : route('product.create') }}" method="POST" enctype="multipart/form-data" class="card">
+          <form action="{{ $product->exists ? route('product.update', $product->id) : route('product.create') }}" method="POST" enctype="multipart/form-data" class="card">
             @csrf
-            @if($product)
+            @if($product->exists)
               @method('PUT')
             @endif
             <div class="card-body">
-              <h3 class="card-title">{{ $product ? 'Editar' : 'Novo' }} produto</h3>
+              <h3 class="card-title">{{ $product->exists ? 'Editar' : 'Novo' }} produto</h3>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">

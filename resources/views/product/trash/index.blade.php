@@ -22,9 +22,9 @@
                 @foreach ($products as $product)  
                   <tr>
                     <td><span class="text-muted">1</span></td>
-                    <td>Batata rosa</td>
-                    <td></td>
-                    <td></td>                                                
+                    <td>{{ $product->description }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>{{ $product->inventory_level }}</td>                                                
                     <td>
                       <a class="icon active_product" id="{{ $product->id }}" href="#">
                         <i class="fe fe-refresh-ccw"></i>

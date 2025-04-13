@@ -66,7 +66,7 @@ class ProductController extends Controller
             'price'             => 'required|numeric',
             'inventory_level'   => 'required|int',
             'barcode'           => 'required|numeric',
-            'active'            => 'required|boolean',
+            'active'            => 'int',
         ]);
     }
 }

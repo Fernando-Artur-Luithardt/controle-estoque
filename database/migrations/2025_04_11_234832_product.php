@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('barcode', 200);
             $table->decimal('price', 10, 2)->nullable();
             $table->unsignedInteger('inventory_level')->default(0);
-            $table->smallInteger('active')->default(0);
+            $table->smallInteger('active')->default(1);
             $table->timestamps();
         });
     }

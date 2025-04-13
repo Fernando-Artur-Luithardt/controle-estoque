@@ -19,10 +19,10 @@ class SaleController extends Controller
 
     public function create(Request $request) {
         $request->validate([
-            'amount'        => 'required|numeric|min:1',
-            'price'         => 'required|numeric|min:0',
+            'amount'        => 'required|integer|min:0|max:32767',
+            'price'         => 'nullable|numeric|between:0,99999999.99',
             'product_id'    => 'required|integer|exists:products,id',
-            'update_price'  => 'boolean',
+            'update_price'  => 'sometimes|boolean',
         ]);
 
         $product = Product::find($request->product_id);

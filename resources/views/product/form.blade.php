@@ -14,19 +14,28 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label class="form-label">Descrição</label>
-                    <input type="text" class="form-control" name="description" placeholder="Arroz.." value="{{ $product->description }}">
+                    <input type="text" class="form-control" name="description" placeholder="Arroz.." value="{{ $product->exists ? $product->description : old('description') }}">
+                    @error('description')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
                   <div class="form-group">
                     <label class="form-label">Estoque</label>
-                    <input value="{{ $product->inventory_level }}" name="inventory_level" type="number" class="form-control" placeholder="10.." >
+                    <input value="{{ $product->exists ? $product->inventory_level : old('inventory_level') }}" name="inventory_level" type="number" class="form-control" placeholder="10.." >
+                    @error('inventory_level')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
                   <div class="form-group">
                     <label class="form-label">Código de barras</label>
-                    <input value="{{ $product->barcode }}" name="barcode" type="number" class="form-control" placeholder="78978978978978">
+                    <input value="{{ $product->exists ? $product->barcode : old('barcode') }}" name="barcode" type="number" class="form-control" placeholder="78978978978978">
+                    @error('barcode')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -36,8 +45,11 @@
                       <span class="input-group-prepend">
                         <span class="input-group-text">R$</span>
                       </span>
-                      <input value="{{ $product->price }}" type="text" name="price" class="form-control text-right" aria-label="Valor">                         
+                      <input value="{{ $product->exists ? $product->price : old('price') }}" type="text" name="price" class="form-control text-right" aria-label="Valor">                         
                     </div>
+                    @error('price')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                 </div>                    
               </div>

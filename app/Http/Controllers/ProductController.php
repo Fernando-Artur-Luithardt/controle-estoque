@@ -62,11 +62,11 @@ class ProductController extends Controller
     private function validateRequest(Request $request)
     {
         $request->validate([
-            'description'       => 'required|string',
-            'price'             => 'required|numeric',
-            'inventory_level'   => 'required|int',
-            'barcode'           => 'required|numeric',
-            'active'            => 'int',
-        ]);
+            'description'       => 'required|string|max:200',
+            'price'             => 'required|numeric|between:0,99999999.99',
+            'inventory_level'   => 'required|integer|min:0',
+            'barcode'           => 'required|string|max:200',
+            'active'            => 'nullable|boolean',
+        ]);        
     }
 }

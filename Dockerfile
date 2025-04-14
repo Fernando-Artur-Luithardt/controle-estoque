@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     nodejs \
     npm \
-    && docker-php-ext-install pdo pdo_mysql zip
+    && docker-php-ext-install pdo pdo_mysql zip bcmath
 
 # Instala Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
